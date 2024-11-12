@@ -9,9 +9,11 @@ import pickle
 input_dir = r'C:\Users\user\dataset\test'
 catgories = ['Oil-Spill', 'Non-Oil-Spill']
 
+
 data   = []
 labels = []  #   suppervised ML --> data labled
-
+# locations =[]
+# count =0
 for index, catgorie in enumerate(catgories):
     for file in os.listdir(os.path.join(input_dir,catgorie )):
         img_path = os.path.join(input_dir,catgorie,file)
@@ -19,17 +21,22 @@ for index, catgorie in enumerate(catgories):
         image = resize(image, (15,15))
         data.append(image.flatten())
         labels.append(index)
+        # locations.append(count)
+        # count +=1
     print('Done',catgorie)
 
 data = np.asarray(data)
 labels = np.asarray(labels)
 # unseen data
 
-X_train, X_test, y_train,y_test = train_test_split(data, labels, test_size=0.2, shuffle=True, stratify= labels)
-print('Split')
+X_train, X_test ,y_train,y_test = train_test_split(data, labels ,test_size=0.2, shuffle=True, stratify= labels)
+# print(X_train[0])
+# print(y_train[0]), loc_train, loc_test
+# print(loc_train[0]), locations
+# exit()
 clf = SVC()
 # tunining 
-parameters = [{'gamma':[0.01,0.001,0.00001], 'C':[1, 10,100,1000]}]
+parameters = [{'gamma':[0.01,0.001], 'C':[1, 10]}]
 # It will train the model 12 times to achive the best margin
 grid_search = GridSearchCV(clf, parameters)
 print('train....!')

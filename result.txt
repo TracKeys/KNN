@@ -1,0 +1,7 @@
+
+
+(12, 45) Oil Spill AUG_oil.jpg 0
+(11, 32) Oil Spill oil-spill-accident.jpg 0
+(12, 45) Oil Spill AUG_oil.jpg 0
+(34, 55) Oil Spill oil-spill-accident.jpg 0
+(7, 7) Oil Spill SEP.bmp 0
